@@ -1,16 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.fja.navalbattle.model.cenario;
 
 /**
- *
- * @author Denisson
+ * Orientação de um navio
+ * @author Diego Fleury
  */
 public enum Orientacao {
 
-    VERTICAL, HORIZONTAL;
+    /**
+     * Posição vertical
+     */
+    VERTICAL,
+    /**
+     * Posição horizontal
+     */
+    HORIZONTAL;
 
 }

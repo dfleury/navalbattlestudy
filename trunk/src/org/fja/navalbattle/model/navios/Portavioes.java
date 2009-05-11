@@ -1,12 +1,16 @@
 package org.fja.navalbattle.model.navios;
 
-import org.fja.navalbattle.model.cenario.Coordenada;
-import org.fja.navalbattle.model.*;
-
+/**
+ * Navio de quatro posições
+ * @author Diego Fleury
+ */
 public class Portavioes extends Navio {
- 
-	public void Portavioes(Coordenada coordenadas[]) {
-	 
+
+    /**
+     * Cria navio
+     */
+	public void Portavioes() {
+        inicializaTamanho(4);
 	}
 	 
 }

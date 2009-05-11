@@ -1,12 +1,16 @@
 package org.fja.navalbattle.model.navios;
 
-import org.fja.navalbattle.model.cenario.Coordenada;
-import org.fja.navalbattle.model.*;
-
+/**
+ * Navio de duas partes
+ * @author Diego Fleury
+ */
 public class Veleiro extends Navio {
- 
-	public void Veleiro(Coordenada coordenadas[]) {
-	 
+
+    /**
+     * Cria navio
+     */
+	public void Veleiro() {
+        inicializaTamanho(2);
 	}
 	 
 }

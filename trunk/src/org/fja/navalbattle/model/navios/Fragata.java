@@ -1,12 +1,16 @@
 package org.fja.navalbattle.model.navios;
 
-import org.fja.navalbattle.model.cenario.Coordenada;
-import org.fja.navalbattle.model.*;
-
+/**
+ * Navio de três partes
+ * @author diego
+ */
 public class Fragata extends Navio {
- 
-	public void Fragata(Coordenada coordenadas[]) {
-	 
+
+    /**
+     * Cria navio
+     */
+	public Fragata() {
+        inicializaTamanho(3);
 	}
 	 
 }

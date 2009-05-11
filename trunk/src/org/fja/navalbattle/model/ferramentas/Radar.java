@@ -1,16 +1,14 @@
 package org.fja.navalbattle.model.ferramentas;
 
 import org.fja.navalbattle.model.cenario.Tabuleiro;
-import org.fja.navalbattle.model.templates.Template;
-import org.fja.navalbattle.model.*;
 
+/**
+ * Fornece ponto aproximado de uma parte de um navio inimigo
+ * @author Diego Fleury
+ */
 public class Radar {
- 
-	private Template template;
-	 
-	private Tabuleiro tabuleiro;
-	 
-	public void usar(Tabuleiro tabuleiroOponente) {
+
+	public void usar(Tabuleiro tabuleiro, Tabuleiro tabuleiroOponente) {
 	 
 	}
 	 
