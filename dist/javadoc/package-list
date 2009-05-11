@@ -1,0 +1,10 @@
+org.fja.navalbattle
+org.fja.navalbattle.model
+org.fja.navalbattle.model.cenario
+org.fja.navalbattle.model.ferramentas
+org.fja.navalbattle.model.jogadores
+org.fja.navalbattle.model.jogadores.estrategia
+org.fja.navalbattle.model.navios
+org.fja.navalbattle.model.partida
+org.fja.navalbattle.model.ranking
+org.fja.navalbattle.model.templates

@@ -1,16 +1,14 @@
 package org.fja.navalbattle.model.ferramentas;
 
 import org.fja.navalbattle.model.cenario.Tabuleiro;
-import org.fja.navalbattle.model.templates.Template;
-import org.fja.navalbattle.model.*;
 
+/**
+ * Fornece um espectro de cores que identificam as áreas mais atingidas
+ * @author Diego Fleury
+ */
 public class Termostato {
- 
-	private Template template;
-	 
-	private Tabuleiro tabuleiro;
-	 
-	public void usar(Tabuleiro tabuleiroOponente) {
+
+	public void usar(Tabuleiro tabuleiro, Tabuleiro tabuleiroOponente) {
 	 
 	}
 	 
