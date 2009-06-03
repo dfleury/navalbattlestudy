@@ -11,6 +11,7 @@ public class Portavioes extends Navio {
      */
 	public void Portavioes() {
         inicializaTamanho(4);
+        inicializaLimiteDeUnidades(1);
 	}
 	 
 }

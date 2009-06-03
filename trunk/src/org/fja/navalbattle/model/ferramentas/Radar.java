@@ -9,7 +9,7 @@ import org.fja.navalbattle.model.cenario.Tabuleiro;
 public class Radar {
 
 	public void usar(Tabuleiro tabuleiro, Tabuleiro tabuleiroOponente) {
-	 
+        // TODO Implementar utilização do radar
 	}
 	 
 }

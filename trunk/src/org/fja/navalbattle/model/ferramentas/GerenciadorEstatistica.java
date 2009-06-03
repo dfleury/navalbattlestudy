@@ -27,7 +27,7 @@ public class GerenciadorEstatistica {
      * Instancia o objeto de estatística
      */
 	private GerenciadorEstatistica() {
-	
+        // TODO Analisar necessidade de implementacao no construtor de GerenciadorEstatistica
 	}
 
     /**
@@ -47,7 +47,7 @@ public class GerenciadorEstatistica {
      * @param disparo Disparo efetuado
      */
 	public void salvarDisparo(Disparo disparo) {
-	 
+        // TODO Salva estatistica de disparo efetuado
 	}
 	 
 }

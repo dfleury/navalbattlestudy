@@ -11,6 +11,7 @@ public class Veleiro extends Navio {
      */
 	public void Veleiro() {
         inicializaTamanho(2);
+        inicializaLimiteDeUnidades(1);
 	}
 	 
 }

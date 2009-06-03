@@ -1,5 +1,7 @@
 package org.fja.navalbattle.model.templates;
 
+import org.fja.navalbattle.control.Controlador;
+
 /**
  * Gerenciamento de templates
  * @author Diego Fleury
@@ -20,7 +22,7 @@ public class GerenciadorTemplates {
      * Instancia GerenciadorTemplates
      */
     private GerenciadorTemplates() {
-
+        // TODO Verificar necessidade de implementação no construtor de GerenciadorTemplates
     }
 
     /**
@@ -37,10 +39,10 @@ public class GerenciadorTemplates {
 
     /**
      * Cria um template vazio
-     * @return Template varioa
+     * @return Template vazio
      */
 	public Template criarTemplate() {
-		return null;
+		return new Template();
 	}
 
     /**
@@ -49,6 +51,8 @@ public class GerenciadorTemplates {
      * @return Objeto de template escolhido
      */
 	public Template abrirTemplate(String nome) {
+        String templatesPath = Controlador.getEnderecoTemplates();
+        // TODO abrir um objeto de template salvo em disco
 		return null;
 	}
 
@@ -57,7 +61,7 @@ public class GerenciadorTemplates {
      * @param template Template a ser salvo
      */
 	public void salvarTemplate(Template template) {
-	 
+        // TODO Salvar objetos de template em disco
 	}
 
     /**
@@ -65,6 +69,8 @@ public class GerenciadorTemplates {
      * @return Lista de templates disponíveis
      */
 	public Template[] listarTemplates() {
+        // TODO Listar todos templates da pasta de templates
+        String templatesPath = Controlador.getEnderecoTemplates();
 		return null;
 	}
 	 

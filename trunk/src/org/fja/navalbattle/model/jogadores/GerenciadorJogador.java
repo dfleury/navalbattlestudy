@@ -1,6 +1,6 @@
 package org.fja.navalbattle.model.jogadores;
 
-import org.fja.navalbattle.model.jogadores.estrategia.Dificuldade;
+import org.fja.navalbattle.control.Controlador;
 
 /**
  * Fornece métodos de gerência sobre os jogadores
@@ -51,8 +51,12 @@ public class GerenciadorJogador {
      */
     public Humano novoHumano() {
         Humano jogadorHumano = fabricaJogador.criarHumano();
-        
-        // TODO: perguntar ao usuário se ele gostaria de abrir um jogador já existem
+
+        // Pergunta ao usuário se ele que abrir um jogador já existente
+        Controlador controlador = Controlador.getInstance();
+        if (controlador.perguntaAbrirJogador()) {
+            jogadorHumano = controlador.abrirJogador();
+        }
 
         return jogadorHumano;
     }
@@ -62,9 +66,7 @@ public class GerenciadorJogador {
      * @return Jogador computador
      */
     public Computador novoComputador() {
-        Computador jogadorComputador = fabricaJogador.criarComputador(Dificuldade.FACIL);
-
-        // TODO: perguntar ao usuário o nível do jogador computador
+        Computador jogadorComputador = fabricaJogador.criarComputador(Controlador.getInstance().perguntaNivelComputador());
 
         return jogadorComputador;
     }
@@ -75,6 +77,7 @@ public class GerenciadorJogador {
      * @return Jogador humano
      */
 	public Humano abrirHumano(int id) {
+        // Implementar a abertuda de um jogador humano
 		return null;
 	}
 
@@ -83,7 +86,7 @@ public class GerenciadorJogador {
      * @param jogador Jogador humano a ser salvo
      */
 	public void salvarHumano(Humano jogador) {
-	 
+        // TODO Implementar ação de salvar um jogador humano
 	}
 
     /**
@@ -91,6 +94,7 @@ public class GerenciadorJogador {
      * @return Vetor de jogadores humanos
      */
 	public Humano[] listarHumanos() {
+        // TODO Fazer a listagem de todos os humanos salvos em arquivo
 		return null;
 	}
 	 

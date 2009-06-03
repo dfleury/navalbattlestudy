@@ -1,15 +1,15 @@
 package org.fja.navalbattle.model.jogadores;
 
+import java.io.Serializable;
 import org.fja.navalbattle.model.cenario.Disparo;
 import org.fja.navalbattle.model.cenario.Tabuleiro;
 import org.fja.navalbattle.model.partida.Partida;
-import org.fja.navalbattle.model.templates.Template;
 
 /**
  * Abstração de jogador. Forne interface para criação de jogadores
  * @author Diego Fleury
  */
-public abstract class Jogador {
+public abstract class Jogador implements Serializable {
 
     /**
      * Nome do jogador

@@ -25,14 +25,29 @@ public abstract class Navio {
 	private Orientacao orientacao;
 
     /**
+     * Limite de unidades de um determinado tipo de navio
+     */
+    private int limiteDeUnidades;
+
+    /**
      * Inicializa o tamanho do navio
      * @param tamanho Quantidade de coordenadas ocupadas
      */
 	protected void inicializaTamanho(int tamanho) {
-        if (tamanho == 0) {
+        if (tamanho > 0) {
             this.tamanho = tamanho;
         }
 	}
+
+    /**
+     * Inicializa o limite de unidades de um determinado tipo de navio
+     * @param limiteDeUnidades
+     */
+    protected void inicializaLimiteDeUnidades(int limiteDeUnidades) {
+        if (limiteDeUnidades > 0) {
+            this.limiteDeUnidades = limiteDeUnidades;
+        }
+    }
 
     /**
      * Registra que recebeu um dano
@@ -56,6 +71,14 @@ public abstract class Navio {
      */
 	public int getTamanho() {
         return tamanho;
+	}
+
+    /**
+     * Retorna o limite de unidades de um determinado tipo
+     * @return Limite de unidades
+     */
+	public int getLimiteDeUnidades() {
+        return limiteDeUnidades;
 	}
 
     /**
