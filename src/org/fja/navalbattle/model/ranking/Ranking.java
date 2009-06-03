@@ -19,7 +19,7 @@ public class Ranking {
      * Instancia o objeto
      */
     private Ranking() {
-
+        // TODO Verificar necessidade de implementação no construtor do Ranking
     }
 
     /**
@@ -39,7 +39,7 @@ public class Ranking {
      * @param partida Partida que deseja-se salvar
      */
 	public void salvarResultadoPartida(Partida partida) {
-	 
+        // TODO salva o resultado da partida
 	}
 
     /**
@@ -47,7 +47,7 @@ public class Ranking {
      * @param humanos Recebe lista de jogadores vindo da gerencia de jogadores e monta o ranking atual
      */
 	public void montarRanking(Humano[] humanos) {
-	 
+        // TODO Implementar a montagem do ranking
 	}
 	 
 }

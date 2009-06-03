@@ -9,6 +9,7 @@ import org.fja.navalbattle.model.cenario.Coordenada;
 public class EstrategiaDificil implements Estrategia {
  
 	public Coordenada pensar(boolean[][] tabuleiro, boolean magrizGuia[][]) {
+        // TODO Implementar inteligência difícil do computador
         return null;
 	}
 	 

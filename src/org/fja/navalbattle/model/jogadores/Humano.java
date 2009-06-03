@@ -1,5 +1,6 @@
 package org.fja.navalbattle.model.jogadores;
 
+import org.fja.navalbattle.control.Controlador;
 import org.fja.navalbattle.model.templates.Template;
 
 /**
@@ -38,7 +39,7 @@ public class Humano extends Jogador {
      * Aguarda jogador escolher coordenada de disparo
      */
     public void jogar() {
-        // TODO: habilitar interface do usuário para que o jogador possa escolher um número
+        Controlador.getInstance().aguardaJogada();
     }
 
 }

@@ -9,7 +9,7 @@ import org.fja.navalbattle.model.cenario.Tabuleiro;
 public class Termostato {
 
 	public void usar(Tabuleiro tabuleiro, Tabuleiro tabuleiroOponente) {
-	 
+        // Implementar utilização do Termostato
 	}
 	 
 }

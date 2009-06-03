@@ -80,7 +80,5 @@ public class BatalhaNaval {
     public void salvarPartidaEncerrada() {
         ranking.salvarResultadoPartida(partida);
     }
-
-    // TODO: implementar escolha de template por parte dos jogadores
 	 
 }

@@ -2,7 +2,7 @@ package org.fja.navalbattle.model.navios;
 
 /**
  * Navio de três partes
- * @author diego
+ * @author Diego Fleury
  */
 public class Fragata extends Navio {
 
@@ -11,6 +11,7 @@ public class Fragata extends Navio {
      */
 	public Fragata() {
         inicializaTamanho(3);
+        inicializaLimiteDeUnidades(2);
 	}
 	 
 }
