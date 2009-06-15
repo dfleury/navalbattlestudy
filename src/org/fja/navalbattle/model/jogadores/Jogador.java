@@ -1,9 +1,12 @@
 package org.fja.navalbattle.model.jogadores;
 
 import java.io.Serializable;
+import org.fja.exceptions.AtribuicaoUnicaException;
+import org.fja.navalbattle.model.BatalhaNaval;
 import org.fja.navalbattle.model.cenario.Disparo;
 import org.fja.navalbattle.model.cenario.Tabuleiro;
 import org.fja.navalbattle.model.partida.Partida;
+import org.fja.navalbattle.model.templates.Template;
 
 /**
  * Abstração de jogador. Forne interface para criação de jogadores
@@ -36,13 +39,26 @@ public abstract class Jogador implements Serializable {
      */
     private Partida partida;
 
+	/**
+	 * Template do tabuleiro do jogador
+	 */
+	private Template template;
+
+	/**
+	 * Informa se o jogador já posicionou todas as peças ou não
+	 */
+	private boolean estaPosicionado = false;
+
     /**
      * Inicializa o tabuleiro
      */
-	protected void inicializaTabuleiro() {
+	protected void inicializaTabuleiro()
+			throws AtribuicaoUnicaException {
         if (tabuleiroJogador == null) {
             tabuleiroJogador = new Tabuleiro();
-        }
+        } else {
+			throw new AtribuicaoUnicaException("Um tabuleiro só pode ser inicializado uma única vez");
+		}
 	}
 
     /**
@@ -108,6 +124,17 @@ public abstract class Jogador implements Serializable {
         Disparo disparo = new Disparo(x, y);
 
         if (matrizGuia[x][y] != true) {
+			
+			StringBuilder output = new StringBuilder("Jogador ");
+				output.append(this.getNome());
+				output.append(" atirou na posicao (");
+				output.append(disparo.getX());
+				output.append(", ");
+				output.append(disparo.getY());
+				output.append(")");
+			
+			System.out.print(output.toString());
+
             Disparo resultadoDisparo = getTabuleiroOponente().recebeDisparo(disparo);
 
             matrizGuia[x][y] = true;
@@ -130,5 +157,47 @@ public abstract class Jogador implements Serializable {
     public void notificaJogada() {
         partida.notificaJogada();
     }
+
+	/**
+	 * Libera para que o jogador posicione seus navios no template
+	 */
+	public abstract void posicionarArsenal();
+
+	/**
+	 * Retorna o template do jogador
+	 * @return Template do jogador
+	 */
+	public Template getTemplate() {
+		return template;
+	}
+
+	/**
+	 * Inicia o jogador com um template montado
+	 * @param template Template montado
+	 * @throws org.fja.exceptions.AtribuicaoUnicaException
+	 */
+	public void inicializaTemplate(Template template) throws AtribuicaoUnicaException {
+		if (this.template == null) {
+			this.template = template;
+		} else {
+			throw new AtribuicaoUnicaException("Um template só pode ser inicializado uma única vez");
+		}
+	}
+
+	/**
+	 * Determina que o jogador já está pronto para iniciar a partida
+	 */
+	protected void jogadorPronto() {
+		estaPosicionado = true;
+		BatalhaNaval.getInstance().travarPosicoes();
+	}
+
+	/**
+	 * Informa se o jogador já posicionou seu navios
+	 * @return Se o jogador já posicionou seu navios
+	 */
+	public boolean estaPosicionado() {
+		return estaPosicionado;
+	}
 	 
 }

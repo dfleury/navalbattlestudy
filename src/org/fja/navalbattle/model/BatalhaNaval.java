@@ -1,21 +1,19 @@
 package org.fja.navalbattle.model;
 
-import org.fja.navalbattle.model.jogadores.Computador;
 import org.fja.navalbattle.model.partida.Partida;
 import org.fja.navalbattle.model.ranking.Ranking;
 import org.fja.navalbattle.model.templates.GerenciadorTemplates;
 import org.fja.navalbattle.model.jogadores.GerenciadorJogador;
-import org.fja.navalbattle.model.jogadores.Humano;
+import org.fja.navalbattle.model.jogadores.Jogador;
 
 /**
  * Inicializa todos controles básicos da regra de negócio
- *
  * @author Diego Fleury
  */
 public class BatalhaNaval {
 
     /**
-     * Usada no padrão Singleton
+     * Referência única da classe BatalhaNaval
      */
 	private static BatalhaNaval instance;
 
@@ -39,8 +37,14 @@ public class BatalhaNaval {
      */
 	private GerenciadorJogador gerenciadorJogadores;
 
+	/**
+	 * Os dois jogadores que irão se enfrentar
+	 */
+	Jogador jogador1, jogador2;
+
     /**
-     * Inicializa controles Singleton básicos para que suas instancias sejam criadas
+     * Inicializa controles Singleton básicos para que suas instâncias sejam
+	 * logo criadas para depois serem simplesmente resgatadas
      */
     private BatalhaNaval() {
         gerenciadorTemplates = GerenciadorTemplates.getInstance();
@@ -60,18 +64,37 @@ public class BatalhaNaval {
         return instance;
 	}
 
+	/**
+	 * Cria os jogadores e solicita-os que posicionem seus navios
+	 */
+	public void prepararNovaPartida() {
+		//jogador1 = gerenciadorJogadores.novoHumano();
+		jogador1 = gerenciadorJogadores.novoComputador();
+        jogador2 = gerenciadorJogadores.novoComputador();
+
+		jogador1.posicionarArsenal();
+		jogador2.posicionarArsenal();
+	}
+
+	/**
+	 * Aguarda ambos jogadores a travarem seus exercitos para travar as posições
+	 * e começar a partida.
+	 */
+	public void travarPosicoes() {
+		if (jogador1.estaPosicionado() && jogador2.estaPosicionado()) {
+			comecarNovaPartida();
+		}
+	}
+
     /**
      * Cria os jogadores e uma partida
      */
-	public void criarNovaPartida() {
+	private void comecarNovaPartida() {
+        jogador1.setTabuleiroOponente(jogador2.getTabuleiro());
+        jogador2.setTabuleiroOponente(jogador1.getTabuleiro());
 
-        Humano jogadorHumano = gerenciadorJogadores.novoHumano();
-        Computador jogadorComputador = gerenciadorJogadores.novoComputador();
-
-        jogadorHumano.setTabuleiroOponente(jogadorComputador.getTabuleiro());
-        jogadorComputador.setTabuleiroOponente(jogadorHumano.getTabuleiro());
-
-        partida = new Partida(jogadorHumano, jogadorComputador);
+        partida = new Partida(jogador1, jogador2);
+		partida.comecar();
 	}
 
     /**
@@ -79,6 +102,10 @@ public class BatalhaNaval {
      */
     public void salvarPartidaEncerrada() {
         ranking.salvarResultadoPartida(partida);
+
+		System.out.println("=================================");
+		System.out.println("Fim de jogo. O jogador vencedor foi: " +
+				partida.getJogadorVencedor().getNome());
     }
 	 
 }

@@ -1,4 +1,6 @@
+org.fja.exceptions
 org.fja.navalbattle
+org.fja.navalbattle.control
 org.fja.navalbattle.model
 org.fja.navalbattle.model.cenario
 org.fja.navalbattle.model.ferramentas

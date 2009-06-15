@@ -9,7 +9,7 @@ public class Portavioes extends Navio {
     /**
      * Cria navio
      */
-	public void Portavioes() {
+	public Portavioes() {
         inicializaTamanho(4);
         inicializaLimiteDeUnidades(1);
 	}
