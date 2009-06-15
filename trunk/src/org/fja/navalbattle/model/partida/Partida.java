@@ -1,5 +1,6 @@
 package org.fja.navalbattle.model.partida;
 
+import java.util.Random;
 import org.fja.navalbattle.model.BatalhaNaval;
 import org.fja.navalbattle.model.jogadores.Humano;
 import org.fja.navalbattle.model.jogadores.Jogador;
@@ -31,27 +32,33 @@ public class Partida {
     private Jogador jogadorAtual;
 
     /**
-     * Recebe os jogadores, inicia o cronometro e libera para o primeiro jogador fazer sua jogada
+     * Recebe os jogadores e registra a partida para os jogadores
      * @param jogador1 Jogador 1
      * @param jogador2 Jogador 2
      */
 	public Partida(Jogador jogador1, Jogador jogador2) {
-         this.jogador1 = jogador1;
-         this.jogador2 = jogador2;
+		this.jogador1 = jogador1;
+		this.jogador2 = jogador2;
 
-         jogador1.registraPartida(this);
-         jogador2.registraPartida(this);
+		jogador1.registraPartida(this);
+		jogador2.registraPartida(this);
+	}
 
-         cronometro.iniciar();
+	/**
+	 * Escolhe um jogador e inicia a partida
+	 */
+	public void comecar() {
+		cronometro = new Cronometro();
+		cronometro.iniciar();
 
-         double numeroAleatorio = Math.random();
-         if (Math.round(numeroAleatorio) == 0) {
-             jogadorAtual = jogador1;
-         } else {
-             jogadorAtual = jogador2;
-         }
+		Random random = new Random();
+		if (random.nextBoolean()) {
+			jogadorAtual = jogador1;
+		} else {
+			jogadorAtual = jogador2;
+		}
 
-         jogadorAtual.jogar();
+		jogadorAtual.jogar();
 	}
 
     /**
@@ -101,5 +108,14 @@ public class Partida {
     public void encerrarPartida() {
         BatalhaNaval.getInstance().salvarPartidaEncerrada();
     }
+
+	/**
+	 * Retorna o último jogador que jogou. Se a partida estiver terminada,
+	 * significa que ele ganhou.
+	 * @return Jogador vencedor
+	 */
+	public Jogador getJogadorVencedor() {
+		return jogadorAtual;
+	}
 	 
 }

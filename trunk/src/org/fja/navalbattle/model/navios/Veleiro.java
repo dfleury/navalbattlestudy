@@ -9,7 +9,7 @@ public class Veleiro extends Navio {
     /**
      * Cria navio
      */
-	public void Veleiro() {
+	public Veleiro() {
         inicializaTamanho(2);
         inicializaLimiteDeUnidades(1);
 	}

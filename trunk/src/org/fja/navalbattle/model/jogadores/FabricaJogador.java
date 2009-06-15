@@ -1,5 +1,6 @@
 package org.fja.navalbattle.model.jogadores;
 
+import org.fja.exceptions.AtribuicaoUnicaException;
 import org.fja.navalbattle.model.jogadores.estrategia.Dificuldade;
 import org.fja.navalbattle.model.jogadores.estrategia.Estrategia;
 import org.fja.navalbattle.model.jogadores.estrategia.EstrategiaDificil;
@@ -12,12 +13,22 @@ import org.fja.navalbattle.model.templates.GerenciadorTemplates;
  */
 public class FabricaJogador {
 
+	private static int sequenciaHumano = 1;
+	private static int sequenciaComputador = 1;
+
     /**
      * Retorna um novo jogador humano
      * @return Jogador humano
      */
 	public Humano criarHumano() {
-		return new Humano("Anônimo", GerenciadorTemplates.getInstance().criarTemplate());
+		try {
+			return new Humano("Anônimo " + FabricaJogador.sequenciaHumano++,
+					GerenciadorTemplates.getInstance().criarTemplate());
+		}
+		catch(AtribuicaoUnicaException e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 
     /**
@@ -33,7 +44,14 @@ public class FabricaJogador {
             estrategia = new EstrategiaDificil();
         }
 
-		return new Computador("Computador", GerenciadorTemplates.getInstance().criarTemplate(), estrategia);
+		try {
+			return new Computador("Computador " + FabricaJogador.sequenciaComputador++,
+					GerenciadorTemplates.getInstance().criarTemplate(), estrategia);
+		}
+		catch(AtribuicaoUnicaException e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 	 
 }

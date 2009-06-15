@@ -1,5 +1,6 @@
 package org.fja.navalbattle.model.jogadores;
 
+import org.fja.exceptions.AtribuicaoUnicaException;
 import org.fja.navalbattle.control.Controlador;
 import org.fja.navalbattle.model.templates.Template;
 
@@ -18,18 +19,22 @@ public class Humano extends Jogador {
      * Cria a instância do jogador humano
      * @param nome Nome do jogador
      * @param template Template inicial
+	 * @throws org.fja.exceptions.AtribuicaoUnicaException
      */
-	public Humano(String nome, Template template) {
-        inicializaTabuleiro();
-        inicializaMatrizGuia();
-        getTabuleiro().aplicarTemplate(template);
+	public Humano(String nome, Template template)
+			throws AtribuicaoUnicaException {
+
+		inicializaTabuleiro();
+		inicializaMatrizGuia();
+		inicializaTemplate(template);
+
         setNome(nome);
         perfil = new Perfil();
 	}
 
     /**
      * Retorna perfil do jogador
-     * @return perfil do jogador
+     * @return Perfil do jogador
      */
     public Perfil getPerfil() {
         return perfil;
@@ -41,6 +46,16 @@ public class Humano extends Jogador {
     public void jogar() {
         Controlador.getInstance().aguardaJogada();
     }
+
+	/**
+	 * Posiciona os navios no template
+	 */
+	public void posicionarArsenal() {
+		/*
+		 * TODO Solicitar ao usuário que posicione suas peças no template que
+		 * será aplicado ao tabuleiro
+		 */
+	}
 
 }
  
